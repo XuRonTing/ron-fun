@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  # FastAPI应用
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: ronfun/api:latest
+    container_name: ronfun-api
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+      - uploads:/app/uploads
+      - logs:/app/logs
+    environment:
+      - ENVIRONMENT=production
+      - MYSQL_SERVER=db
+      - MYSQL_USER=ron_fun
+      - MYSQL_PASSWORD=ronFun@123
+      - MYSQL_DB=ron_fun
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - ronfun-network
+    command: >
+      sh -c "
+        cd /app &&
+        alembic upgrade head &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --proxy-headers
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # MySQL数据库
+  db:
+    image: mysql:8.0
+    container_name: ron-fun-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=ron_fun
+      - MYSQL_USER=ron_fun
+      - MYSQL_PASSWORD=ronFun@123
+      - MYSQL_ROOT_PASSWORD=rootPassword@123
+    networks:
+      - ronfun-network
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Nginx反向代理
+  nginx:
+    image: nginx:1.23-alpine
+    container_name: ronfun-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - uploads:/usr/share/nginx/html/uploads
+    depends_on:
+      - api
+    networks:
+      - ronfun-network
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: ron-fun-redis
+    command: redis-server --requirepass redisPassword@123
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - ronfun-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "redisPassword@123", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  mysql_data:
+  redis_data:
+  uploads:
+  logs:
+
+networks:
+  ronfun-network:
+    name: ronfun-network 

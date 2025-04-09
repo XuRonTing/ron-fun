@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron.fun - 简易演示版</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #605ff0;
+            text-align: center;
+        }
+        .section {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #605ff0;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .header {
+            background-color: #605ff0;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .app-item {
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .product-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-price {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .banner-container {
+            background-color: #ddd;
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="margin: 0;">Ron.fun 简易演示版</h1>
+        </div>
+        
+        <div class="section">
+            <h2>首页功能</h2>
+            <div class="banner-container">
+                <h3>Banner 轮播图区域</h3>
+            </div>
+            
+            <h3>热门应用</h3>
+            <div class="app-grid">
+                <div class="app-item">抽奖</div>
+                <div class="app-item">积分商城</div>
+                <div class="app-item">签到</div>
+                <div class="app-item">任务中心</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>积分商城</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <h3>精美手机壳</h3>
+                    <div class="product-price">500 积分</div>
+                </div>
+                <div class="product-item">
+                    <h3>蓝牙耳机</h3>
+                    <div class="product-price">1200 积分</div>
+                </div>
+                <div class="product-item">
+                    <h3>电影票兑换券</h3>
+                    <div class="product-price">800 积分</div>
+                </div>
+                <div class="product-item">
+                    <h3>咖啡券</h3>
+                    <div class="product-price">300 积分</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>抽奖功能</h2>
+            <p>支持九宫格抽奖和大转盘抽奖，用户可以使用积分参与抽奖活动，有机会获得各种奖品。</p>
+        </div>
+        
+        <div class="section">
+            <h2>API文档</h2>
+            <p>如果API服务器已启动，您可以查看API文档了解更多接口信息。</p>
+            <a href="/docs" class="btn">查看API文档</a>
+        </div>
+        
+        <div class="section">
+            <h2>演示说明</h2>
+            <p>此页面仅作为简单演示使用。完整的功能需要配置数据库和启动后端服务。</p>
+        </div>
+    </div>
+</body>
+</html> 

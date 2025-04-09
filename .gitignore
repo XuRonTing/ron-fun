@@ -1,0 +1,58 @@
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器目录
+.idea/
+.vscode/
+*.sublime-*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 依赖目录
+node_modules/
+venv/
+.env
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+.tmp/
+temp/
+
+# 上传文件目录
+uploads/
+
+# 数据库
+*.sqlite
+*.db
+
+# Docker
+deploy_temp/
+ron-fun-deploy.tar.gz
+
+# 密码和敏感信息
+deploy.sh
+deploy.bat

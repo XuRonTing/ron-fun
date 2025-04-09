@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron.fun - 演示版</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #605ff0;
+            text-align: center;
+        }
+        .card {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #605ff0;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ron.fun 演示版</h1>
+        
+        <div class="card">
+            <h2>API文档</h2>
+            <p>查看API文档了解更多接口信息。</p>
+            <a href="/docs" class="btn">查看API文档</a>
+        </div>
+        
+        <div class="card">
+            <h2>演示说明</h2>
+            <p>由于演示环境使用SQLite数据库，部分功能可能无法完全展示。完整功能需配置MySQL数据库和进行数据迁移。</p>
+        </div>
+        
+        <div class="card">
+            <h2>可用功能</h2>
+            <ul>
+                <li>用户认证</li>
+                <li>抽奖模块</li>
+                <li>积分商城</li>
+                <li>首页Banner和应用</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

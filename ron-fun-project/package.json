@@ -1,0 +1,27 @@
+{
+  "name": "ron-fun",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "0.1.0",
+  "description": "Ron.fun - 集成H5和管理后台的Web应用",
+  "scripts": {
+    "dev:client": "cd packages/client && npm run dev",
+    "dev:admin": "cd packages/admin && npm run dev",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0",
+    "prettier": "^2.8.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
