@@ -13,6 +13,8 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     description=settings.PROJECT_DESCRIPTION,
     version=settings.PROJECT_VERSION,
+    # 添加root_path配置，支持子路径访问
+    root_path="/ron-fun" if os.getenv("ENABLE_ROOT_PATH", "false").lower() == "true" else "",
 )
 
 # 设置CORS
